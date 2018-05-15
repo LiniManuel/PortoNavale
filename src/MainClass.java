@@ -111,16 +111,13 @@ public class MainClass
 		
 			break;
 		case 2:
-			System.out.println("Simula?");
+			System.out.println("Modificare l'ora di arrivo: ");
 			
 		case 3:
-			System.out.println("Visualizza ordine alfabetico");
+			System.out.println("Visualizza in ordine di arrivo");
 
 		case 4:
-			System.out.println("Visualizza in ordine di tempo");
-			
-		case 6:
-			System.out.println("verifica presenza nella lista");
+			System.out.println("Visualizza le barche proveniente dalla città da inserire: ");
 
 		default:
 			break;

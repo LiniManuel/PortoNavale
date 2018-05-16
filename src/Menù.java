@@ -5,7 +5,7 @@ public class Menù
 	private int numeroVoci;
 	private String[] elencoVoci;
 	
-	public void Menu(String[] elenco)
+	public  Menù(String[] elenco)
 	{
 		numeroVoci=elenco.length;
 		elencoVoci=new String[numeroVoci];
@@ -27,7 +27,7 @@ public class Menù
 		int voceScelta=-1;
 		do
 		{
-		VisualizzaMenu();
+		this.VisualizzaMenu();
 		System.out.println("Scegli...");
 		  
 		 try

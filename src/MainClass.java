@@ -12,8 +12,14 @@ public class MainClass
 		ConsoleInput tastiera=new ConsoleInput();
 		int ora,minuti;
 		
-		String[] elenco= {"1-Inserisci nuova barca","2-Arrivo Barca","3-Modificare orario previsto","4-Visualizza elenco barche in base agli orari","5-Situazione d'emergenza", "6-Visualizza barche  proveniente da città specifica"};
-		System.out.println("Benvenuto al porto navale di Catania \n");
+		String[] elenco= {"1-Inserisci nuova barca",
+						  "2-Arrivo Barca",
+						  "3-Modificare orario previsto",
+						  "4-Visualizza elenco barche in base agli orari",
+						  "5-Situazione d'emergenza", 
+						  "6-Visualizza barche  proveniente da città specifica"};
+
+		System.out.println("Benvenuto al porto navale di Catania,\nCosa desidera fare?\nSeleziona una delle voci sottostanti.\n");
 		Porto p1=new Porto();
 		
 		Menù m1=new Menù(elenco);
@@ -64,7 +70,7 @@ public class MainClass
 				System.out.println("ora acquisita");
 
 				p1.inserisciBarca(b1);
-			
+				
 				p1.salvaLista("copia.bin");
 				default:
 				break;
@@ -72,10 +78,12 @@ public class MainClass
 				
 			break;
 		case 2:
-			System.out.println("Simulare l'arrivo di quale barca: ");
+			System.out.println("Inserire il codice della barca che si vuole cambiare orario: ");
+			
 			break;
 		case 3:
 			System.out.println("Modificare l'arrivo di quale barca: ");
+			
 			break;
 		case 4:
 			System.out.println("Visualizza elenco barche in base agli orari: "+'\n');

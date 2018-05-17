@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>70</y>
+      <w>360</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>Barca
+--
+-int codice
+-String portoProvenienza
+-LocalTime orarioArrivo
+-boolean sos
+--
++Barca(in codice:int, in portoProvenienza:String,in orarioArrivo:LocalTime,
+in sos:boolean)
++Barca(in barca:Barca)
++getCodice():int
++setCodice(in codice:int)
++getPortoProvenienza():String
++setportoProvenienza(in portoProvenienza:String)
++getOrarioArrivo():LocalTime
++setOrarioArrivo(in orarioArrivo:LocalTime)
++getSos():boolean
++setSos(in sos:boolean)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>610</x>
+      <y>70</y>
+      <w>210</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Nodo
+--
+-Barca info
+-Nodo link
+--
++Nodo(in barca:Barca)
++getInfo():Barca
++setInfo(in barca:Barca)
++setLink():Nodo
++setLink(in link:Nodo)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>400</y>
+      <w>390</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>Porto
+--
+-Nodo head
+-int elementi
+--
++Porto()
++getElementi():int
+-creaNodo(in barca:Barca, in link:Nodo)
+-getLinkPosizione(in posizione:int):Nodo
++inserisciInTesta(in barca:Barca)
++toString():String
++inserisciInCoda(in barca:Barca)
++inserisciInPosizione(in barca:Barca, in posizione:int)
++eliminaInTesta()
++eliminaInCoda()
++eliminaInPosizione(in posizione:int)
++visita(in posizione:int)String
++getBarca(in posizione:int)Barca
++esportaCSV(in nomeFile:String)
++salvaòLista(in nomeFile:String)
++caricaLista(in nomeFile:String)
++registraBarca(in info:Barca)
++inserisciBarca(in barca:Barca)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>350</x>
+      <y>180</y>
+      <w>280</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>260.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>700</x>
+      <y>220</y>
+      <w>30</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;180.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>810</x>
+      <y>130</y>
+      <w>120</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;50.0;100.0;50.0;100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

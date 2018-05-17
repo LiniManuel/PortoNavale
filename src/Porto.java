@@ -61,13 +61,13 @@ public class Porto implements Serializable
 	
 	public String toString()
 	{
-		String risultato="Head";
+		String risultato="Elenco barche in ordine di arrivo: ";
 		if (elementi==0)
-			return risultato+="-->";
+			return risultato+="-";
 		Nodo p=head;
 		while (p!=null)
 		{
-			risultato+="-->"+p.getInfo().toString();
+			risultato+='\n'+"-"+p.getInfo().toString();
 			p=p.getLink();
 		}
 		return risultato;
@@ -195,7 +195,7 @@ public class Porto implements Serializable
 		file.closeFile();
 		
 	}
-	public void salvaPorto(String nomeFile) throws IOException
+	public void salvaLista(String nomeFile) throws IOException
 	{
 		FileOutputStream file =new FileOutputStream(nomeFile);
 		ObjectOutputStream writer=new ObjectOutputStream(file);
@@ -204,7 +204,7 @@ public class Porto implements Serializable
 		file.close();
 	}
 	
-	public Porto caricaPorto (String nomeFile) throws IOException, ClassNotFoundException
+	public Porto caricaLista (String nomeFile) throws IOException, ClassNotFoundException
 	{
 		FileInputStream file=new FileInputStream(nomeFile);
 		ObjectInputStream reader= new ObjectInputStream(file);
@@ -215,4 +215,26 @@ public class Porto implements Serializable
 		file.close();
 		return porto;
 	}
+	public Barca getPorto(int posizione) throws PortoException 
+	{
+		if(elementi==0)
+			throw new PortoException("Lista vuota");
+		if(posizione<0 || posizione>elementi)
+			throw new PortoException("Posizione non valida");
+		Nodo p=getLinkPosizione(posizione);
+		return p.getInfo();
+	}
+	public void registraBarca(Barca info)
+	{
+		Nodo p=creaNodo(info, head);
+		head=p;
+		elementi++;
+	}
+	public void inserisciBarca(Barca barca)
+	{
+		Nodo p=creaNodo(barca, head);
+		head=p;
+		elementi++;
+	}
+
 }

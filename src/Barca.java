@@ -108,17 +108,7 @@ public class Barca implements Serializable
 	/**
 	 * Metodo toString per visualizzare i valori degli attributi
 	 */
-	public Barca caricaBarca (String nomeFile) throws IOException, ClassNotFoundException
-	{
-		FileInputStream file=new FileInputStream(nomeFile);
-		ObjectInputStream reader= new ObjectInputStream(file);
-		
-		Barca barca;
-		
-		barca=(Barca)(reader.readObject());
-		file.close();
-		return barca;
-	}
+
 	public LocalTime getOrarioArrivo() 
 	{
 		return orarioArrivo;

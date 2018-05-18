@@ -85,6 +85,23 @@ public class Barca implements Serializable
 	{
 		this.orarioArrivo = orarioArrivo;
 	} 
+
+
+	/**
+	 * Metodo getter che restituisce l'attributo orarioArrivo
+	 * @return orarioArrivo
+	 */
+	public LocalTime getOrarioArrivo() 
+	{
+		return orarioArrivo;
+	}
+	/**
+	 * Metodo setter consente di impostare l'attributo orarioArrivo 
+	 */
+	public void setOrarioArrivo(int ore, int minuti) 
+	{
+		orarioArrivo=LocalTime.of(ore, minuti);
+	}
 	/**
 	 * Metodo getter che restituisce l'attributo Sos
 	 * @return sos
@@ -106,21 +123,6 @@ public class Barca implements Serializable
 	public String toString()
 	{
 		return("codice= "+getCodice()+'\t'+"Porto provenienza= "+getPortoProvenienza()+'\t'+"orario="+getOrarioArrivo().getHour()+":"+getOrarioArrivo().getMinute());
-	}
-	/**
-	 * Metodo getter che restituisce l'attributo orarioArrivo
-	 * @return orarioArrivo
-	 */
-	public LocalTime getOrarioArrivo() 
-	{
-		return orarioArrivo;
-	}
-	/**
-	 * Metodo setter consente di impostare l'attributo orarioArrivo 
-	 */
-	public void setOrarioArrivo(int ore, int minuti) 
-	{
-		orarioArrivo=LocalTime.of(ore, minuti);
 	}
 }
 

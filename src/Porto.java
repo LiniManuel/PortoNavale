@@ -7,8 +7,8 @@ import java.io.Serializable;
 
 /**
  * La classe rappresenta un processo che restituisce una serie di Barche.
- * @versione 1.0
- * @author Manuel Lini
+ * @versione 1.0.
+ * @author Manuel Lini.
  */
 
 public class Porto implements Serializable
@@ -27,8 +27,8 @@ public class Porto implements Serializable
 		elementi=0;
 	}
 	/**
-	 * Metodo getter che restituisce il numero di elementi inseriti
-	 * @return elementi
+	 * Metodo getter che restituisce il numero di elementi inseriti.
+	 * @return elementi.
 	 */
 	public int getElementi()
 	{
@@ -36,9 +36,9 @@ public class Porto implements Serializable
 	}
 	/**
 	 * Metodo privato utilizzato all'interno della classe per aggiungere all'elenco.
-	 * @param barca è la parte informativa del nodo
-	 * @param link contiene il reference del nodo successivo(collegamento)
-	 * @return nodo restituisce il nodo creato
+	 * @param barca è la parte informativa del nodo.
+	 * @param link contiene il reference del nodo successivo(collegamento).
+	 * @return nodo restituisce il nodo creato.
 	 */
 	private Nodo creaNodo(Barca barca, Nodo link)
 	{
@@ -47,10 +47,10 @@ public class Porto implements Serializable
 		return nodo;
 	}
 	/**
-	 * Metodo privato all'interno della classe per ottenere il nodo in una certa posione
-	 * @param posizione posizione da cui ricavare il nodo
-	 * @return p il collegamento ottenuto nella posizione richiesta
-	 * @throws PortoException viene sollevata la seguente eccezione se viene inserito una posizione no valida
+	 * Metodo privato all'interno della classe per ottenere il nodo in una certa posione.
+	 * @param posizione posizione da cui ricavare il nodo.
+	 * @return p il collegamento ottenuto nella posizione richiesta.
+	 * @throws PortoException viene sollevata la seguente eccezione se viene inserito una posizione no valida.
 	 */
 	private Nodo getLinkPosizione(int posizione) throws PortoException
 	{
@@ -74,8 +74,8 @@ public class Porto implements Serializable
 		return p;
 	}
 	/**
-	 * Metodo che inserisci un nodo in testa alla lista Porto
-	 * @param barca parte informativa del nodo
+	 * Metodo che inserisci un nodo in testa alla lista Porto.
+	 * @param barca parte informativa del nodo.
 	 */
 	
 	public void inserisciInTesta (Barca barca)
@@ -86,8 +86,8 @@ public class Porto implements Serializable
 		elementi++;
 	}
 	/**
-	 * 
-	 * @param barca
+	 * Metodo che inserisce una nuova Barca in coda.
+	 * @param barca.
 	 * @throws PortoException viene sollevata quando il porto è vuoto.
 	 */
 	public void inserisciInCoda(Barca barca)throws PortoException
@@ -149,10 +149,10 @@ public class Porto implements Serializable
 		elementi--;
 	}
 	/**
-	 * 
-	 * @param barca
-	 * @param posizione
-	 * @throws PortoException
+	 * Metodo con cui possiamo aggiungere una nuova Barca nella posizione da noi scelta.
+	 * @param barca indica il nodo che stiamo aggiungendo.
+	 * @param posizione indica la posizione all'interno della lista.
+	 * @throws PortoException viene sollevato se il porto è vuoto.
 	 */
 	public void inserisciInposizione(Barca barca,int posizione)throws PortoException
 	{
@@ -238,7 +238,7 @@ public class Porto implements Serializable
 		
 	}
 	/**
-	 * Mretodo che consente di salvare gli elementi nel porto, salvare le barche su file binario.
+	 * Metodo che consente di salvare gli elementi nel porto, salvare le barche su file binario.
 	 * @param nomeFile nome del file su cui si salvano le barche.
 	 * @throws IOException viene sollevata quando si verificano errori durante la scrittura su file.
 	 */
@@ -270,10 +270,9 @@ public class Porto implements Serializable
 		return porto;
 	}
 	/**
-	 * Consente di ricavare una barca dal porto, in base alla posione
-	 * @param posizione
-	 * @return
-	 * @throws PortoException viene soll
+	 * Consente di ricavare una barca dal porto, in base alla posione.
+	 * @param posizione indica la posizione all'interno del nodo.
+	 * @throws PortoException viene sollevata se la posizione non è valida.
 	 */
 	public Barca getPorto(int posizione) throws PortoException 
 	{
@@ -286,7 +285,7 @@ public class Porto implements Serializable
 	}
 	/**
 	 * Metodo che serve per registrare le informazioni di una barca all'interno del porto
-	 * @param info
+	 * @param info contiene le informazioni della barca.
 	 */
 	public void registraBarca(Barca info)
 	{
@@ -297,7 +296,7 @@ public class Porto implements Serializable
 	/**
 	 * Metodo che serve a visualizzare le barche del porto in base al porto di provenienza.
 	 * @param nomePorto nome del Porto.
-	 * @return elenco
+	 * @return elenco indica l'elenco di barche
 	 * @throws PortoException viene sollevata quando il porto è vuoto.
 	 */
 	public Barca[] visualizzaPorto(String nomePorto) throws PortoException

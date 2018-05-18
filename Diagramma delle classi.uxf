@@ -4,10 +4,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>100</x>
+      <x>0</x>
       <y>40</y>
       <w>360</w>
-      <h>280</h>
+      <h>300</h>
     </coordinates>
     <panel_attributes>Barca
 --
@@ -26,13 +26,14 @@ in sos:boolean)
 +getOrarioArrivo():LocalTime
 +setOrarioArrivo(in orarioArrivo:LocalTime)
 +getSos():boolean
-+setSos(in sos:boolean)</panel_attributes>
++setSos(in sos:boolean)
++toString()String</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>740</x>
+      <x>640</x>
       <y>40</y>
       <w>210</w>
       <h>160</h>
@@ -45,47 +46,14 @@ in sos:boolean)
 +Nodo(in barca:Barca)
 +getInfo():Barca
 +setInfo(in barca:Barca)
-+setLink():Nodo
++getLink():Nodo
 +setLink(in link:Nodo)</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>570</x>
-      <y>310</y>
-      <w>390</w>
-      <h>360</h>
-    </coordinates>
-    <panel_attributes>Porto
---
--Nodo head
--int elementi
---
-+Porto()
-+getElementi():int
--creaNodo(in barca:Barca, in link:Nodo)
--getLinkPosizione(in posizione:int):Nodo
-+inserisciInTesta(in barca:Barca)
-+toString():String
-+inserisciInCoda(in barca:Barca)
-+inserisciInPosizione(in barca:Barca, in posizione:int)
-+eliminaInTesta()
-+eliminaInCoda()
-+eliminaInPosizione(in posizione:int)
-+visita(in posizione:int)String
-+getBarca(in posizione:int)Barca
-+esportaCSV(in nomeFile:String)
-+salvaòLista(in nomeFile:String)
-+caricaLista(in nomeFile:String)
-+registraBarca(in info:Barca)
-+inserisciBarca(in barca:Barca)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>450</x>
+      <x>350</x>
       <y>150</y>
       <w>310</w>
       <h>30</h>
@@ -96,7 +64,7 @@ in sos:boolean)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>830</x>
+      <x>730</x>
       <y>190</y>
       <w>30</w>
       <h>140</h>
@@ -107,7 +75,7 @@ in sos:boolean)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>940</x>
+      <x>840</x>
       <y>100</y>
       <w>120</w>
       <h>70</h>
@@ -115,5 +83,40 @@ in sos:boolean)
     <panel_attributes>lt=&lt;&lt;-
 </panel_attributes>
     <additional_attributes>10.0;50.0;100.0;50.0;100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>510</x>
+      <y>310</y>
+      <w>460</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>Porto
+--
+-Nodo head
+-int elementi
+--
++Porto()
++getElementi()int
++creaNodo(in barca:Barca,in link:Nodo)Nodo
++getLinkPosizione(in posizione:int)Nodo
++inserisciInTesta(in barca:Barca)
++inserisciInCoda(in barca:Barca)
++toString()String
++eliminaInTesta()
++eliminaincoda()
++inserisciInPosizione(in barca:Barca, in posizione:int)
++eliminaInPosizione(in posizione:int)
++getBarca(in posizione:int)Barca
++esportaCSV(in nomeFile:String)
++salvaLista(in nomeFile:String)
++caricaLista(in nomeFile:String)Porto
++getPorto(in posizione:int)Barca
++visualizzaPorto(in nomePorto:String)Barca[]
++modificaOrario(in codice:int)
+
+</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.io.NotSerializableException;
+import java.time.DateTimeException;
 import java.time.LocalTime;
 import java.util.Scanner;
 
@@ -24,8 +26,9 @@ public class MainClass
 		
 		Menù m1=new Menù(elenco);
 		String nomeFile = "arrivi.bin";
-		LocalTime oraAttuale;
+		LocalTime oraAttuale = null;
 		String pp=null;
+		int sceltamenu=0;
 		
 		
 		try 
@@ -39,8 +42,8 @@ public class MainClass
 		
 		do
 		{
-			
-		switch (m1.scelta()) 
+		sceltamenu=m1.scelta();
+		switch (sceltamenu) 
 		{
 			case 1:
 			System.out.println("Vuoi registrare una nuova barca? 1=Si, 2=No");
@@ -53,25 +56,50 @@ public class MainClass
 			{
 			case 1:
 				
-				System.out.println("Inserisci codice barca");
-				b1.setCodice(tastiera.readInt());
+				System.out.println("-Inserisci codice barca: ");
+				try {
+					b1.setCodice(tastiera.readInt());
+				}
+				catch(NumberFormatException n)
+				{
+					System.out.println('\n'+"Formato non disponibile, riprova inserendo un numero..."+'\n');	
+				}
 				
-				System.out.println("Inserisci il porto di provenienza");
-				b1.setPortoProvenienza(tastiera.readString());
+				System.out.println("-Inserisci il porto di provenienza: ");
+				try {
+					b1.setPortoProvenienza(tastiera.readString());
+				}
+				catch(NumberFormatException n)
+				{
+					System.out.println('\n'+"Formato non disponibile, riprova inserendo una stringa..."+'\n');	
+				}
 			
-				System.out.println("Inserisci orario di arrivo");
-				System.out.print("Ora:");
+				System.out.println("-Inserisci orario di arrivo: ");
+				System.out.print('\t'+"-Ora:");
 				ora=tastiera.readInt();
-				System.out.print("minuti:");
+				System.out.print('\t'+"-Minuti:");
 				minuti=tastiera.readInt();
-				oraAttuale=LocalTime.of(ora,minuti,0);
-				b1.setOrarioArrivo(oraAttuale);
-				System.out.println("acquisisco l'ora, attendere");
-				System.out.println("ora acquisita");
-
-				p1.inserisciBarca(b1);
 				
-				p1.salvaLista("copia.bin");
+				try
+				{
+					oraAttuale=LocalTime.of(ora,minuti,0);
+					b1.setOrarioArrivo(oraAttuale);
+				}
+				catch(DateTimeException dt)
+				{
+					System.out.println('\n'+"Orario non inserito correttamente, torna al menu peincipale..."+'\n');
+				}
+
+					p1.registraBarca(b1);
+					System.out.println('\n'+"Barca registrata nel nostro software, desidera altro: "+'\n');
+				try
+				{
+					p1.salvaLista("arrivi.bin");
+				}
+				catch(NotSerializableException n)
+				{
+					System.out.println("\n"+"Salvataggio porto non avvenuto con successo"+'\n');
+				}
 				default:
 				break;
 			}
@@ -82,7 +110,21 @@ public class MainClass
 			
 			break;
 		case 3:
-			System.out.println("Modificare l'arrivo di quale barca: ");
+			int codice=0;
+			System.out.println("Inserisci il codice identificativo della barca da modificare: ");
+			codice=tastiera.readInt();
+			try 
+			{
+				p1.modificaOrario(codice);
+			} 
+			catch (NumberFormatException e1) 
+			{
+				System.out.println("Formato dato inserito errato");
+			} 
+			catch (PortoException e1) 
+			{
+				System.out.println(e1.toString());
+			}
 			
 			break;
 		case 4:
@@ -94,9 +136,9 @@ public class MainClass
 			} catch (PortoException e) {
 				System.out.println(e.toString());
 			} catch (ClassNotFoundException e) {
-				System.out.println("Impossibile caricare oggetti di tipo laboratorio");
+				System.out.println("Impossibile caricare oggetti di tipo porto");
 			} catch (IOException e) {
-				System.out.println("Impossibile completare il caricamento degli accessi");
+				System.out.println("Impossibile completare il caricamento delle barche");
 			} catch (FileException e) {
 				System.out.println("File non trovato");
 			}
@@ -105,31 +147,31 @@ public class MainClass
 			System.out.println("Quale barca ha la situazione d'emergenza, inserisci il suo codice: ");
 			
 			break;
-		/*case 6:
-			System.out.println("Inserisci città delle barche che vuoi visualizzare: ");
+		case 6:
+			System.out.println("Di che città proveniente vuoi visualizzare la serie di barche: ");
+			String nome=tastiera.readString();
+			Barca[] elencoBarche;
 			try {
-				System.out.print("Porto di provenienza su cui si vuole cercare?: ");
-				pp=tastiera.readString();
-				}catch (NumberFormatException e) {
-				System.out.println("Formato dato inserito errato");
-					} catch (IOException e) {
-				System.out.println("Impossibile leggere da tastiera");
-					
-		System.out.println("DATA INSERITA->"+data.toString());
-			try {
-				//l1.salvaPorto(data);
-				l1=l1.CaricaPorto(data);
-				System.out.println("Caricamento delle barche in data "+data.toString()+" eseguito con successo");
-				System.out.println(l1.toString());
-			} catch (ClassNotFoundException e) {
-				System.out.println("Impossibile caricare oggetti di tipo porto");
-			} catch (IOException e) {
-				System.out.println("Impossibile completare il caricamento delle barche");
-			}		*/			
+				elencoBarche=p1.visualizzaPorto(nome);
+				for (int i = 0; i < elencoBarche.length; i++) 
+				{
+					System.out.println(elencoBarche[i].toString());
+				}
+			} catch (PortoException e)
+			{
+				e.toString();
+			}
+			 catch (NullPointerException e)
+			{
+				System.out.println('\n'+"Nessuna barca è in arrivo da "+nome+'\n');
+	
+			}
+			
+			
 		default:
 			break;
 		}
-		}while(m1.scelta()!=0);
+		}while(sceltamenu!=0);
 		
 	}
 	

@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>70</y>
+      <x>100</x>
+      <y>40</y>
       <w>360</w>
       <h>280</h>
     </coordinates>
@@ -32,8 +32,8 @@ in sos:boolean)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>610</x>
-      <y>70</y>
+      <x>740</x>
+      <y>40</y>
       <w>210</w>
       <h>160</h>
     </coordinates>
@@ -52,8 +52,8 @@ in sos:boolean)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>440</x>
-      <y>400</y>
+      <x>570</x>
+      <y>310</y>
       <w>390</w>
       <h>360</h>
     </coordinates>
@@ -85,30 +85,30 @@ in sos:boolean)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>350</x>
-      <y>180</y>
-      <w>280</w>
+      <x>450</x>
+      <y>150</y>
+      <w>310</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>260.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>290.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>700</x>
-      <y>220</y>
+      <x>830</x>
+      <y>190</y>
       <w>30</w>
-      <h>200</h>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;180.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>810</x>
-      <y>130</y>
+      <x>940</x>
+      <y>100</y>
       <w>120</w>
       <h>70</h>
     </coordinates>

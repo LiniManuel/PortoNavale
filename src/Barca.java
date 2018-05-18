@@ -8,12 +8,13 @@ import java.io.Serializable;
  * La classe Barca rappresenta una barca in arrivo al porto. La barca è costitutita dai seguenti attributi:+
  * un codice, il porto di provenienza, l'orario dell'arrivo e un segnale sos in caso di emergenza.
  * @version 1.0
- * @author Manuel
+ * @author Manuel Lini
  *
  */
 
 public class Barca implements Serializable
 {
+	//Attributi
 	private int codice;
 	private String portoProvenienza;
 	private LocalTime orarioArrivo;
@@ -26,6 +27,10 @@ public class Barca implements Serializable
 	 * @param sos Indica in caso di emergenza il segnale con cui automaticamenente la barca avrà la precedenza su tutte le altre
 	 */
 	
+	/**
+	 * Metodo Barca che ti permettere di istanziare gli oggetti
+	 */
+	
 	public Barca(int codice, String portoProvenienza,int ore,int minuti,boolean sos)
 	{
 		setCodice(codice);
@@ -33,9 +38,8 @@ public class Barca implements Serializable
 		setOrarioArrivo(ore, minuti);
 		setSos(sos);
 	}
-	
 	/**
-	 * Metodo Barca che ti permettere di istanziare gli oggetti
+	 * Costruttore del metodo Barca.
 	 */
 	public Barca(Barca barca)
 	{
@@ -45,75 +49,75 @@ public class Barca implements Serializable
 		setSos(barca.getSos());
 	}
 	/**
-	 * Costruttore del metodo Barca
+	 * Metodo getter che restituisce l'attributo codice
+	 * @return codice 
 	 */
-
 	public int getCodice() 
 	{
 		return codice;
 	}
 	/**
-	 * Metodo getter dell'attributo codice 
+	 * Metodo setter che consente di impostare l'attributo codice
 	 */
-
 	public void setCodice(int codice) 
 	{
 		this.codice = codice;
 	}
 	/**
-	 * Metodo setter dell'attributo codice
+	 * Metodo getter che restituisce l'attributo PortoProvenienza
+	 * @return portoProvenienza
 	 */
-
 	public String getPortoProvenienza() 
 	{
 		return portoProvenienza;
 	}
 	/**
-	 * Metodo getter dell'attributo PortoProvenienza
+	 * Metodo setter che consente di impostare l'attributo PortoProvenienza
 	 */
-
 	public void setPortoProvenienza(String portoProvenienza) 
 	{
 		this.portoProvenienza = portoProvenienza;
 	}
 	/**
-	 * Metodo setter dell'attributo PortoProvenienza
+	 * Metodo setter consente di impostare l'attributo orarioArrivo 
 	 */
-
 	public void setOrarioArrivo(LocalTime orarioArrivo) 
 	{
 		this.orarioArrivo = orarioArrivo;
 	} 
-
-
+	/**
+	 * Metodo getter che restituisce l'attributo Sos
+	 * @return sos
+	 */
 	public boolean getSos() 
 	{
 		return sos;
 	}
 	/**
-	 * Metodo getter dell'attributo Sos
+	 * Metodo setter che consente di impostare l'attributo Sos
 	 */
-
 	public void setSos(boolean sos) 
 	{
 		this.sos = sos;
 	}
 	/**
-	 * Metodo setter dell'attributo Sos
+	 * Metodo toString per visualizzare i valori degli attributi
 	 */
 	public String toString()
 	{
-		return(getCodice()+" "+getPortoProvenienza()+" "+getOrarioArrivo());
+		return("codice= "+getCodice()+'\t'+"Porto provenienza= "+getPortoProvenienza()+'\t'+"orario="+getOrarioArrivo().getHour()+":"+getOrarioArrivo().getMinute());
 	}
 	/**
-	 * Metodo toString per visualizzare i valori degli attributi
+	 * Metodo getter che restituisce l'attributo orarioArrivo
+	 * @return orarioArrivo
 	 */
-
 	public LocalTime getOrarioArrivo() 
 	{
 		return orarioArrivo;
 	}
-
+	/**
+	 * Metodo setter consente di impostare l'attributo orarioArrivo 
+	 */
 	public void setOrarioArrivo(int ore, int minuti) 
 	{
 		orarioArrivo=LocalTime.of(ore, minuti);

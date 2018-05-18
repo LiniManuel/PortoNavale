@@ -11,8 +11,8 @@ public class Ordinatore
 		b1=new Barca(porto.getBarca(pos1));
 		b2=new Barca(porto.getBarca(pos2));
 	
-		porto.inseriscInPosizione(b1, pos2);
-		porto.inseriscInPosizione(b2, pos1);
+		porto.inserisciInposizione(b1, pos2);
+		porto.inserisciInposizione(b2, pos1);
 		
 		porto.eliminaInPosizione(pos2+2);
 		porto.eliminaInPosizione(pos1+1);

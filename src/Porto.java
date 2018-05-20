@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 /**
  * La classe rappresenta un processo che restituisce una serie di Barche.
- * @versione 1.0.
+ * @version 1.0.
  * @author Manuel Lini.
  */
 
@@ -16,7 +16,7 @@ public class Porto implements Serializable
 	//Attributi
 	private Nodo head;
 	private int elementi;
-	ConsoleInput tastiera=new ConsoleInput();
+	
 	
 	/**
 	 * Costruttore. Istanzia un elenco di barche vuoto.
@@ -110,11 +110,11 @@ public class Porto implements Serializable
 	{
 		String risultato="Elenco barche in ordine di arrivo: ";
 		if (elementi==0)
-			return risultato+="-";
+			return risultato+="";
 		Nodo p=head;
 		while (p!=null)
 		{
-			risultato+='\n'+"-"+p.getInfo().toString();
+			risultato+='\n'+""+p.getInfo().toString();
 			p=p.getLink();
 		}
 		return risultato;
@@ -178,7 +178,7 @@ public class Porto implements Serializable
 		if (elementi==0)
 			throw new PortoException("Lista vuota");
 		
-		if (posizione<=0 || posizione>elementi)
+		if (posizione<0 || posizione>elementi)
 			throw new PortoException("Posizione non valida");
 	
 		if (posizione==1)
@@ -315,24 +315,193 @@ public class Porto implements Serializable
 	 * Metodo che serve per modiciare l'orario di arrivo di una barca, per selezionare quale barca vuole cambiare orario, inserire il codice identificativo.
 	 * @param codice viene inserito per riconoscere quale di quale barca si vuole modificare l'orario.
 	 * @throws PortoException viene sollevata quando il porto è vuoto.
-	 * @throws NumberFormatException
+	 * @throws NumberFormatException viene sollevata quando viene inserito un formato sbagliato.
 	 * @throws IOException viene sollevata quando si verificano errori sulla scrittura del file.
 	 */
-	public void modificaOrario(int codice) throws PortoException, NumberFormatException, IOException
+	public void modificaOrario(int codice,int ora,int minuti) throws PortoException, NumberFormatException, IOException
 	{
-	int ora=0;
-	int minuti=0;
+	
 	for (int i = 1; i < this.getElementi()+1; i++) 
 	{
 		if (getBarca(i).getCodice()==codice) 
 		{
-			System.out.println("inserire ora: ");
-			ora=tastiera.readInt();
-			System.out.println("inserire minuti: ");
-			minuti=tastiera.readInt();
+			
 			getBarca(i).setOrarioArrivo(ora, minuti);
 		}
 	}
 	}
+	/**
+	 * Elimina la
+	 * @param p
+	 * @param c
+	 * @throws PortoException
+	 * @throws NumberFormatException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
+	public void EliminaBarca(Porto p,int c) throws PortoException, NumberFormatException, IOException, ClassNotFoundException
+	{
+		if (elementi==0)
+		{
+			throw new PortoException("Nessuna prenotazione presente");
+		}
+		
+		for (int i = 1; i <= p.getElementi(); i++) 
+		{
+			if (getBarca(i).getCodice()==c)
+			{
+				if (i==1)
+				{
+					eliminaInTesta();
+					System.out.println("eliminazione avvenuta con successo");
+					return;
+				}
+				if(i==p.getElementi())
+				{
+					eliminaInCoda();
+					System.out.println("eliminazione avvenuta con successo");
+					return;
+				}
+				eliminaInPosizione(i);
+				System.out.println("eliminazione avvenuta con successo");
+				return;
+			}
+		}
+		throw new PortoException("Nessuna prenotazione con questo codice identificativo");
+	}
+	/**
+	 * 
+	 * @param p
+	 * @param codice
+	 * @throws PortoException
+	 * @throws IOException
+	 * @throws FileException
+	 * @throws NumberFormatException
+	 * @throws ClassNotFoundException
+	 */
+	public void arrivoBarca(Porto p,int codice) throws PortoException, IOException, FileException, NumberFormatException, ClassNotFoundException
+	{
+		for (int i = 1; i <= p.getElementi(); i++) 
+		{
+			if (getBarca(i).getCodice()==codice) 
+			{
+				System.out.println("BARCA IN ARRIVO NEL PORTO");
+				System.out.println("BARCA-->"+getBarca(i).toString());
+				esportaCSV("arrivi.txt");
+				p.EliminaBarca(p, i);
+				return;
+			}
+		}
+		throw new PortoException("nessuna barca presente con questo codice");
+	}
+	/**
+	 * 
+	 * @param codice
+	 * @throws PortoException
+	 */
+	public void segnaleSos(int codice) throws PortoException
+	{
+		System.out.println("ATTENZIONE..SITUAZIONE DI EMERGENZA");
+		for (int i = 1; i < this.getElementi(); i++) 
+		{
+			if (getBarca(i).getCodice()==codice) 
+			{
+				getBarca(i).setSos(true);
+				inserisciInTesta(getBarca(i));
+				return;
+			}
+		}
+		throw new PortoException("nessuna barca presente con questo codice");
+	}
+	/**
+	 * 
+	 * @return
+	 * @throws PortoException
+	 */
+	public Barca[] array() throws PortoException
+	{
+		Barca[] arrayp=new Barca[elementi];
+		for (int i = 0; i < arrayp.length; i++) 
+		{
+			Nodo n1=getLinkPosizione(i+1);
+			arrayp[i]=n1.getInfo();
+		}
+		return arrayp;
+	}
+	/**
+	 * 
+	 * @param array
+	 * @param pos1
+	 * @param pos2
+	 * @return
+	 */
+	public static int scambia(Barca[] array, int pos1, int pos2)
+	{
+		Barca b;
+		if(pos1<0 || pos1>=array.length || pos2<0 ||pos2>=array.length)
+			return -1;
+		b=new Barca(array[pos1]);
+		array[pos1]=new Barca(array[pos2]);
+		array[pos2]=new Barca(b);
+		return 0;
+	}
+	/**
+	 * 
+	 * @param array
+	 * @return
+	 */
+	public static String[] copia(String[] array)
+	{
+		String[] arrayCopia=new String[array.length];
+		for (int i = 0; i < arrayCopia.length; i++) 
+		{
+			arrayCopia[i]=array[i];
+		}
+		
+		return arrayCopia;
+		
+	}
+	/**
+	 * 
+	 * @param array
+	 * @return
+	 */
+	public static Barca[] copia(Barca[] array)
+	{
+		Barca[] arrayCopia=new Barca[array.length];
+		for (int i = 0; i < arrayCopia.length; i++) 
+		{
+			arrayCopia[i]=array[i];	
+		}
+		return arrayCopia;
+	}
+	/**
+	 * Ordina le barche in ordine crescente passando dall'array.
+	 * @return l'array ordinato con le barche ordinate in base all' orario di arrivo.
+	 * @throws PortoException viene sollevata se il porto è vuoto.
+	 */
+	public  Barca[] selectionSortCrescenteOrario(Porto p) throws PortoException
+	{
+		if (elementi==0)
+		{
+			throw new PortoException("Nessuna barca presente");
+		}
+		Barca[] array;
+		array=p.array();
+		Barca[] arrayOrdinato=copia(array);
+		for (int i = 0; i < arrayOrdinato.length-1; i++) 
+		{
+			for (int j = i+1; j < arrayOrdinato.length; j++) 
+			{
+				if(arrayOrdinato[j].getOrarioArrivo().isBefore(arrayOrdinato[i].getOrarioArrivo()))
+					scambia(arrayOrdinato, i, j);
+			}
+		}
+		
+		return arrayOrdinato;
+	}
+
 	
 }
+	
+

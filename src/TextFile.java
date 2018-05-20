@@ -15,7 +15,7 @@ public class TextFile
 			this.mode='R';
 			if (mode=='w' || mode=='W')
 			{
-				FileWriter f1= new FileWriter(fileName);
+				FileWriter f1= new FileWriter(fileName,true);
 				writer = new BufferedWriter(f1);
 				this.mode='W';
 			}

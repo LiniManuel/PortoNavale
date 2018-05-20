@@ -25,7 +25,7 @@ public class MainClass
 		Porto p1=new Porto();
 		
 		Menù m1=new Menù(elenco);
-		String nomeFile = "arrivi.bin";
+		String nomeFile = "porto.bin";
 		LocalTime oraAttuale = null;
 		String pp=null;
 		int sceltamenu=0;
@@ -33,7 +33,7 @@ public class MainClass
 		
 		try 
 		{
-			p1.caricaLista("arrivi.bin");
+			p1=p1.caricaLista("porto.bin");
 		} 
 		catch (ClassNotFoundException | IOException e) 
 		{
@@ -48,7 +48,7 @@ public class MainClass
 			case 1:
 			System.out.println("Vuoi registrare una nuova barca? 1=Si, 2=No");
 			int entrata=0;
-			Barca b1=new Barca(1,"Genova",22,13,true);
+			Barca b1=new Barca();
 			entrata=tastiera.readInt();
 			
 						
@@ -94,28 +94,65 @@ public class MainClass
 					System.out.println('\n'+"Barca registrata nel nostro software, desidera altro: "+'\n');
 				try
 				{
-					p1.salvaLista("arrivi.bin");
+					p1.salvaLista("porto.bin");
 				}
 				catch(NotSerializableException n)
 				{
 					System.out.println("\n"+"Salvataggio porto non avvenuto con successo"+'\n');
+					break;
 				}
-				default:
-				break;
+				
+				
 			}
 				
 			break;
 		case 2:
-			System.out.println("Inserire il codice della barca che si vuole cambiare orario: ");
+			int c=0;
+			System.out.println("inserire il codice della barca in arrivo: ");
+			c=tastiera.readInt();
+			try 
+			{
+				p1.arrivoBarca(p1,c);
+			} 
+			catch (NumberFormatException e2) 
+			{
+				System.out.println("formato inserito errato");
+			} 
+			catch (ClassNotFoundException e2) 
+			{
+				System.out.println("classe non trovata");
+			} 
+			catch (PortoException e2) 
+			{
+				System.out.println(e2.toString());
+			} 
+			catch (FileException e2) {
 			
+				System.out.println("impossibile scrivere sul file");
+			}
+			try
+			{
+				p1.salvaLista("porto.bin");
+			}
+			catch(NotSerializableException n)
+			{
+				System.out.println("\n"+"Salvataggio porto non avvenuto con successo"+'\n');
+				break;
+			}
 			break;
 		case 3:
 			int codice=0;
+			int ora1=0;
+			int minuti1=0;
 			System.out.println("Inserisci il codice identificativo della barca da modificare: ");
 			codice=tastiera.readInt();
+			System.out.println("inserire ora: ");
+			ora1=tastiera.readInt();
+			System.out.println("inserire minuti: ");
+			minuti1=tastiera.readInt();
 			try 
 			{
-				p1.modificaOrario(codice);
+				p1.modificaOrario(codice,ora1,minuti1);
 			} 
 			catch (NumberFormatException e1) 
 			{
@@ -125,27 +162,45 @@ public class MainClass
 			{
 				System.out.println(e1.toString());
 			}
-			
+			try
+			{
+				p1.salvaLista("porto.bin");
+			}
+			catch(NotSerializableException n)
+			{
+				System.out.println("\n"+"Salvataggio porto non avvenuto con successo"+'\n');
+				break;
+			}
 			break;
 		case 4:
 			System.out.println("Visualizza elenco barche in base agli orari: "+'\n');
 			try {
-				p1=Ordinatore.selectionSortCrescenteNodi(p1);
+				Barca[] arrayordinato=new Barca[p1.getElementi()];
+				arrayordinato=p1.selectionSortCrescenteOrario(p1);
 				System.out.println("visualizzazione orari barca in ordine di tempo:");
-				System.out.println(p1.toString());
-			} catch (PortoException e) {
+				for (int i = 0; i < arrayordinato.length; i++) 
+				{
+					System.out.println(arrayordinato[i].toString());
+				}
+			}
+			catch (PortoException e)
+			{
 				System.out.println(e.toString());
-			} catch (ClassNotFoundException e) {
-				System.out.println("Impossibile caricare oggetti di tipo porto");
-			} catch (IOException e) {
-				System.out.println("Impossibile completare il caricamento delle barche");
-			} catch (FileException e) {
-				System.out.println("File non trovato");
+				break;
 			}
 			break;
 		case 5:
+			int c1=0;
 			System.out.println("Quale barca ha la situazione d'emergenza, inserisci il suo codice: ");
-			
+			c=tastiera.readInt();
+			try 
+			{
+				p1.segnaleSos(c);
+			} 
+			catch (PortoException e1) 
+			{
+				System.out.println(e1.toString());
+			}
 			break;
 		case 6:
 			System.out.println("Di che città proveniente vuoi visualizzare la serie di barche: ");

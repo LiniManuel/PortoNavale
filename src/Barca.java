@@ -48,6 +48,13 @@ public class Barca implements Serializable
 		setOrarioArrivo(barca.getOrarioArrivo());
 		setSos(barca.getSos());
 	}
+	public Barca()
+	{
+		this.codice=0;
+		this.portoProvenienza="";
+		this.orarioArrivo=null;
+		this.sos=false;
+	}
 	/**
 	 * Metodo getter che restituisce l'attributo codice
 	 * @return codice 
@@ -122,7 +129,7 @@ public class Barca implements Serializable
 	 */
 	public String toString()
 	{
-		return("codice= "+getCodice()+'\t'+"Porto provenienza= "+getPortoProvenienza()+'\t'+"orario="+getOrarioArrivo().getHour()+":"+getOrarioArrivo().getMinute());
+		return("Codice= "+getCodice()+'\t'+"Porto provenienza= "+getPortoProvenienza()+'\t'+"Orario arrivo="+getOrarioArrivo().getHour()+":"+getOrarioArrivo().getMinute()+'\n');
 	}
 }
 

@@ -5,7 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.Serializable;
 
 /**
- * La classe Barca rappresenta una barca in arrivo al porto. La barca è costitutita dai seguenti attributi:+
+ * La classe Barca rappresenta una barca in arrivo al porto. La barca è costitutita dai seguenti attributi:
  * un codice, il porto di provenienza, l'orario dell'arrivo e un segnale sos in caso di emergenza.
  * @version 1.0
  * @author Manuel Lini

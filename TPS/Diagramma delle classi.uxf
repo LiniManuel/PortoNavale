@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>40</y>
+      <y>0</y>
       <w>360</w>
       <h>300</h>
     </coordinates>
@@ -34,7 +34,7 @@ in sos:boolean)
     <id>UMLClass</id>
     <coordinates>
       <x>640</x>
-      <y>40</y>
+      <y>0</y>
       <w>210</w>
       <h>160</h>
     </coordinates>
@@ -54,7 +54,7 @@ in sos:boolean)
     <id>Relation</id>
     <coordinates>
       <x>350</x>
-      <y>150</y>
+      <y>110</y>
       <w>310</w>
       <h>30</h>
     </coordinates>
@@ -65,7 +65,7 @@ in sos:boolean)
     <id>Relation</id>
     <coordinates>
       <x>730</x>
-      <y>190</y>
+      <y>150</y>
       <w>30</w>
       <h>140</h>
     </coordinates>
@@ -76,7 +76,7 @@ in sos:boolean)
     <id>Relation</id>
     <coordinates>
       <x>840</x>
-      <y>100</y>
+      <y>60</y>
       <w>120</w>
       <h>70</h>
     </coordinates>
@@ -88,9 +88,9 @@ in sos:boolean)
     <id>UMLClass</id>
     <coordinates>
       <x>510</x>
-      <y>310</y>
+      <y>270</y>
       <w>460</w>
-      <h>350</h>
+      <h>480</h>
     </coordinates>
     <panel_attributes>Porto
 --
@@ -115,6 +115,14 @@ in sos:boolean)
 +getPorto(in posizione:int)Barca
 +visualizzaPorto(in nomePorto:String)Barca[]
 +modificaOrario(in codice:int)
++EliminaBarca(in p:Porto,in c:int)
++arivoBarca(in p:Porto,in codice:int)
++segnaleSos(in codice:int)
++Barca[] array()
++scambia(in array:Barca[],in pos1:int, in pos2:int)
++String[] copia(in array:Barca[])
++Barca[] copia(in array:Barca[])
++Barca[] selectionSortCrescenteOrario(in p: Porto)
 
 </panel_attributes>
     <additional_attributes/>

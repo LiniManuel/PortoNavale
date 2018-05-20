@@ -6,7 +6,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 /**
- * La classe rappresenta un processo che restituisce una serie di Barche.
+ * La classe rappresenta un porto che restituisce una serie di Barche.
  * @version 1.0.
  * @author Manuel Lini.
  */
@@ -200,8 +200,8 @@ public class Porto implements Serializable
 		
 	}
 	/**
-	 * 
-	 * @param posizione 
+	 * Metodo getter della classe barca.
+	 * @param posizione della barca all'interno della lista.
 	 * @throws PortoException viene sollevata quando il porto è vuoto o la posizione inserita non è valida.
 	 */
 	public Barca getBarca (int posizione) throws PortoException
@@ -220,7 +220,7 @@ public class Porto implements Serializable
 	 * @param nomeFile nome del file su cui esportare le barche.
 	 * @throws IOException viene sollevata quando si verificano errori durante la scrittura su file.
 	 * @throws PortoException viene sollevata quando il porto è vuoto.
-	 * @throws FileException
+	 * @throws FileException quando si verifica un erore sul file.
 	 */
 	public void esportaCSV (String nomeFile) throws IOException, PortoException, FileException
 	{
@@ -331,19 +331,17 @@ public class Porto implements Serializable
 	}
 	}
 	/**
-	 * Elimina la
-	 * @param p
-	 * @param c
-	 * @throws PortoException
-	 * @throws NumberFormatException
-	 * @throws IOException
-	 * @throws ClassNotFoundException
+	 * Elimina una barca in testa, per simulare l'arrivo
+	 * @throws PortoException viene sollevata quando il porto è vuoto.
+	 * @throws NumberFormatException viene sollevata quando inseriamo un formato errato.
+	 * @throws IOException viene sollevata quando ci sono errori sul file.
+	 * @throws ClassNotFoundException viene sollevato quando la classe on viene trovata.
 	 */
 	public void EliminaBarca(Porto p,int c) throws PortoException, NumberFormatException, IOException, ClassNotFoundException
 	{
 		if (elementi==0)
 		{
-			throw new PortoException("Nessuna prenotazione presente");
+			throw new PortoException("Nessuna barca presente");
 		}
 		
 		for (int i = 1; i <= p.getElementi(); i++) 
@@ -395,9 +393,9 @@ public class Porto implements Serializable
 		throw new PortoException("nessuna barca presente con questo codice");
 	}
 	/**
-	 * 
-	 * @param codice
-	 * @throws PortoException
+	 * Serve per creare un segnare sos, e mettere in testa la barca che ha lanciato questo segnale.
+	 * @param codice codice identificativo della barca da inserire per inserire il segnale sos
+	 * @throws PortoException viene sollevata quando il porto è vuoto.
 	 */
 	public void segnaleSos(int codice) throws PortoException
 	{
@@ -414,9 +412,9 @@ public class Porto implements Serializable
 		throw new PortoException("nessuna barca presente con questo codice");
 	}
 	/**
-	 * 
-	 * @return
-	 * @throws PortoException
+	 * Serve per creare un array di barche.
+	 * @return arrayp.
+	 * @throws PortoException viene sollevata quando il porto è vuoto.
 	 */
 	public Barca[] array() throws PortoException
 	{
@@ -429,11 +427,11 @@ public class Porto implements Serializable
 		return arrayp;
 	}
 	/**
-	 * 
+	 * Serve per scambiare due barche nell' array.
 	 * @param array
-	 * @param pos1
-	 * @param pos2
-	 * @return
+	 * @param pos1 posizione prima barca
+	 * @param pos2 posizione seconda barca
+	 * @return 0.
 	 */
 	public static int scambia(Barca[] array, int pos1, int pos2)
 	{
@@ -446,9 +444,7 @@ public class Porto implements Serializable
 		return 0;
 	}
 	/**
-	 * 
-	 * @param array
-	 * @return
+	 * Metodo String dell'array.
 	 */
 	public static String[] copia(String[] array)
 	{
@@ -462,9 +458,8 @@ public class Porto implements Serializable
 		
 	}
 	/**
-	 * 
-	 * @param array
-	 * @return
+	 * Serve per creare un array di copia.
+	 * @return array di copia.
 	 */
 	public static Barca[] copia(Barca[] array)
 	{

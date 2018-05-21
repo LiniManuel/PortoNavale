@@ -9,6 +9,7 @@
       <w>360</w>
       <h>300</h>
     </coordinates>
+   
     <panel_attributes>Barca
 --
 -int codice

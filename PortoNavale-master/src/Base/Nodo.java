@@ -1,3 +1,4 @@
+package Base;
 import java.io.Serializable;
 /**
  * Classe Nodo rappresenta i nodi che servono a costuire il Porto, gli attributi rappresentano.

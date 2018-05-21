@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>360</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>Barca
+--
+-int codice
+-String portoProvenienza
+-LocalTime orarioArrivo
+-boolean sos
+--
++Barca(in codice:int, in portoProvenienza:String,in orarioArrivo:LocalTime,
+in sos:boolean)
++Barca(in barca:Barca)
++getCodice():int
++setCodice(in codice:int)
++getPortoProvenienza():String
++setportoProvenienza(in portoProvenienza:String)
++getOrarioArrivo():LocalTime
++setOrarioArrivo(in orarioArrivo:LocalTime)
++getSos():boolean
++setSos(in sos:boolean)
++toString()String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>640</x>
+      <y>0</y>
+      <w>210</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Nodo
+--
+-Barca info
+-Nodo link
+--
++Nodo(in barca:Barca)
++getInfo():Barca
++setInfo(in barca:Barca)
++getLink():Nodo
++setLink(in link:Nodo)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>350</x>
+      <y>110</y>
+      <w>310</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>290.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>730</x>
+      <y>150</y>
+      <w>30</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>60</y>
+      <w>120</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;50.0;100.0;50.0;100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>510</x>
+      <y>270</y>
+      <w>460</w>
+      <h>480</h>
+    </coordinates>
+    <panel_attributes>Porto
+--
+-Nodo head
+-int elementi
+--
++Porto()
++getElementi()int
++creaNodo(in barca:Barca,in link:Nodo)Nodo
++getLinkPosizione(in posizione:int)Nodo
++inserisciInTesta(in barca:Barca)
++inserisciInCoda(in barca:Barca)
++toString()String
++eliminaInTesta()
++eliminaincoda()
++inserisciInPosizione(in barca:Barca, in posizione:int)
++eliminaInPosizione(in posizione:int)
++getBarca(in posizione:int)Barca
++esportaCSV(in nomeFile:String)
++salvaLista(in nomeFile:String)
++caricaLista(in nomeFile:String)Porto
++getPorto(in posizione:int)Barca
++visualizzaPorto(in nomePorto:String)Barca[]
++modificaOrario(in codice:int)
++EliminaBarca(in p:Porto,in c:int)
++arivoBarca(in p:Porto,in codice:int)
++segnaleSos(in codice:int)
++Barca[] array()
++scambia(in array:Barca[],in pos1:int, in pos2:int)
++String[] copia(in array:Barca[])
++Barca[] copia(in array:Barca[])
++Barca[] selectionSortCrescenteOrario(in p: Porto)
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

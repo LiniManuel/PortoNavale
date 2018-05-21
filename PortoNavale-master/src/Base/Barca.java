@@ -1,3 +1,4 @@
+package Base;
 import java.io.FileInputStream;
 import java.time.LocalTime;
 import java.io.IOException;
@@ -54,6 +55,7 @@ public class Barca implements Serializable
 		this.portoProvenienza="";
 		this.orarioArrivo=null;
 		this.sos=false;
+		this.orarioArrivo = LocalTime.now();
 	}
 	/**
 	 * Metodo getter che restituisce l'attributo codice

@@ -1,9 +1,11 @@
+package Base;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+
 
 /**
  * La classe rappresenta un porto che restituisce una serie di Barche.
@@ -166,6 +168,10 @@ public class Porto implements Serializable
 			inserisciInCoda(barca);
 			return;
 		}
+		Nodo pn=creaNodo(barca, getLinkPosizione(posizione));
+		Nodo precedente=getLinkPosizione(posizione-1);
+		precedente.setLink(pn);
+		elementi++;
 	}
 	/**
 	 * Metodo che elimina il nodo in posizione inserita.

@@ -1,3 +1,4 @@
+package Base;
 
 public class FileException extends Exception
 {
